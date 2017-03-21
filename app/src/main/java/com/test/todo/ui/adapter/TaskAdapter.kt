@@ -52,27 +52,4 @@ class TaskAdapter(context: Context, val onClickTaskAdapter: TaskClickListener) :
         }
         return null
     }
-
-    inner class TaskViewHolder(val view: View) {
-        var task: Task? = null
-
-        fun bindTask(task: Task) {
-            this.task = task
-            when (task.status) {
-                Task.Status.OPENED.ordinal -> {
-                    view.image.setImageResource(R.mipmap.check_circle_outline)
-                    view.image.setColorFilter(view.context.resources.getColor(R.color.grey))
-                }
-                Task.Status.CLOSED.ordinal -> {
-                    view.image.setImageResource(R.mipmap.check_circle)
-                    view.image.setColorFilter(view.context.resources.getColor(R.color.green))
-                }
-            }
-            view.title.text = task.title
-
-            view.image.setOnClickListener {
-                onClickTaskAdapter.onTaskClicked(task)
-            }
-        }
-    }
 }
