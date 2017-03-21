@@ -12,6 +12,7 @@ import com.test.todo.tools.DBManager
 import com.test.todo.tools.Extra
 import com.test.todo.tools.interfaces.TaskClickListener
 import com.test.todo.ui.adapter.TaskAdapter
+import com.test.todo.ui.widget.TaskImageButton
 import io.realm.Realm
 import io.realm.Sort
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,17 +30,6 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
 
         DBManager.instance.realm!!.addChangeListener { realm ->
             adapter.notifyDataSetChanged()
-        }
-
-        listView.setOnItemLongClickListener { parent, view, position, id ->
-            TaskDao.deleteTask(TaskDao.getById(id.toInt())!!)
-            true
-        }
-
-        listView.setOnItemClickListener { parent, view, position, id ->
-            var intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra(Extra.EXTRA_ID, id)
-            startActivity(intent)
         }
     }
 
@@ -71,12 +61,24 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
         TaskDao.insertTask(task)
     }
 
-    override fun onTaskClicked(task: Task) {
-        TaskDao.updateTask(Realm.Transaction { realm ->
-            task.status = when (task.status) {
-                Task.Status.OPENED.ordinal -> Task.Status.CLOSED.ordinal
-                else -> Task.Status.OPENED.ordinal
-            }
-        })
+    override fun onTaskClickWithStatus(task: Task?, status: TaskImageButton.Status) {
+        if (status == TaskImageButton.Status.DELETE) {
+            TaskDao.deleteTask(task!!)
+        } else {
+            TaskDao.updateTask(Realm.Transaction { realm ->
+                    task?.status = when (task?.status) {
+                        Task.Status.OPENED.ordinal -> Task.Status.CLOSED.ordinal
+                        else -> Task.Status.OPENED.ordinal
+                    }
+            })
+        }
+    }
+
+    override fun onTaskClick(task: Task?) {
+        var intent = Intent(this, DetailActivity::class.java)
+        val arg = Bundle()
+        arg.putInt(Extra.EXTRA_ID, task?.id!!)
+        intent.putExtra("arg", arg)
+        startActivity(intent)
     }
 }

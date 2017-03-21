@@ -8,14 +8,14 @@ import com.test.todo.R
 import com.test.todo.model.Task
 import com.test.todo.model.dao.TaskDao
 import com.test.todo.tools.interfaces.TaskClickListener
+import com.test.todo.ui.adapter.viewholder.TaskViewHolder
 import io.realm.Sort
-import kotlinx.android.synthetic.main.adapter_task.view.*
 
 /**
  * Created by Benoit on 06/03/2017.
  */
 
-class TaskAdapter(context: Context, val onClickTaskAdapter: TaskClickListener) : BaseAdapter() {
+class TaskAdapter(context: Context, val onClickTaskAdapter: TaskClickListener?) : BaseAdapter() {
 
     val context = context
 
@@ -30,7 +30,7 @@ class TaskAdapter(context: Context, val onClickTaskAdapter: TaskClickListener) :
         val holder: TaskViewHolder
         if (convertView == null) {
             view = View.inflate(context, R.layout.adapter_task, null)
-            holder = TaskViewHolder(view)
+            holder = TaskViewHolder(view, onClickTaskAdapter)
             view.tag = holder
         } else {
             view = convertView

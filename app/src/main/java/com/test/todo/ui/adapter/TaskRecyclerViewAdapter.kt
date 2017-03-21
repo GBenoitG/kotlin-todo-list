@@ -46,12 +46,12 @@ class TaskRecyclerViewAdapter : RecyclerView.Adapter<TaskRecyclerViewAdapter.Tas
             this.task = task
             when (Task.Status.valueOf(task.status.toString())) {
                 Task.Status.OPENED -> {
-                    view.image.setImageResource(R.mipmap.check_circle)
-                    view.image.setColorFilter(R.color.grey,PorterDuff.Mode.MULTIPLY)
+                    view.taskButton.setImageResource(R.drawable.ic_check_circle)
+                    view.taskButton.setColorFilter(R.color.grey,PorterDuff.Mode.MULTIPLY)
                 }
                 Task.Status.CLOSED -> {
-                    view.image.setImageResource(R.mipmap.check_circle_outline)
-                    view.image.setColorFilter(R.color.green,PorterDuff.Mode.MULTIPLY)
+                    view.taskButton.setImageResource(R.drawable.ic_check_circle_outline)
+                    view.taskButton.setColorFilter(R.color.green,PorterDuff.Mode.MULTIPLY)
                 }
 
             }

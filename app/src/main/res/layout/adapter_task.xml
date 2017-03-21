@@ -6,11 +6,11 @@
               android:layout_height="wrap_content"
               android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/image"
+    <com.test.todo.ui.widget.TaskImageButton
+        android:id="@+id/taskButton"
         android:layout_width="@dimen/icon_size_big"
         android:layout_height="@dimen/icon_size_big"
-        android:src="@mipmap/check_circle_outline"
+        android:src="@drawable/ic_check_circle_outline"
         android:tint="@color/grey"/>
 
     <View

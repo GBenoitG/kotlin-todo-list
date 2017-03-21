@@ -24,9 +24,19 @@ class DetailActivity : AppCompatActivity(), View.OnFocusChangeListener {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val id = intent.getLongExtra(Extra.EXTRA_ID, -1).toInt()
-        task = TaskDao.getById(id)
+//        val id = intent.getLongExtra(Extra.EXTRA_ID, -1).toInt()
+        val id = intent.getBundleExtra("arg")?.getInt(Extra.EXTRA_ID, -1)
 
+        task = TaskDao.getById(id!!)
+        if (task != null) {
+            configureView()
+        } else {
+            contentLayout.visibility = View.GONE
+            noDataMsg.visibility = View.VISIBLE
+        }
+    }
+
+    private fun configureView() {
         detailTitle.text = task?.title ?: ""
         detailTitleEdit.setText(task?.title ?: "", TextView.BufferType.EDITABLE)
         detailDescription.text = task?.description ?: ""

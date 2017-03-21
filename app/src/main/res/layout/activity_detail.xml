@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/activity_detail"
+<RelativeLayout
+    android:id="@+id/activityDetail"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,66 +9,82 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context="com.test.todo.ui.activity.DetailActivity">
 
-    <ViewSwitcher
-        android:id="@+id/switcherTitle"
+    <TextView
+        android:id="@+id/noDataMsg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:text="@string/no_data_error"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:visibility="gone"/>
 
-        <TextView
-            android:id="@+id/detailTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingLeft="4dp"
-            android:minLines="1"
-            android:hint="@string/title"
-            tools:text="@string/tool_value_title"
-            android:textSize="@dimen/textsize_big"
-            android:textColor="@color/grey_very_dark"
-            android:layout_marginBottom="16dp"/>
-
-        <EditText
-            android:id="@+id/detailTitleEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:inputType="text"
-            android:hint="@string/title"
-            tools:text="@string/tool_value_title"
-            android:textSize="@dimen/textsize_big"
-            android:textColor="@color/grey_very_dark"/>
-    </ViewSwitcher>
-
-    <ViewSwitcher
-        android:id="@+id/switcherDesc"
+    <LinearLayout
+        android:id="@+id/contentLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/detailDescription"
+        <ViewSwitcher
+            android:id="@+id/switcherTitle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/description"
-            android:paddingTop="10dp"
-            android:paddingLeft="4dp"
-            android:minLines="12"
-            tools:text="@string/tool_value_description"
-            android:textSize="@dimen/textsize_medium"/>
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/detailDescriptionEdit"
+            <TextView
+                android:id="@+id/detailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="4dp"
+                android:minLines="1"
+                android:hint="@string/title"
+                tools:text="@string/tool_value_title"
+                android:textSize="@dimen/textsize_big"
+                android:textColor="@color/grey_very_dark"
+                android:layout_marginBottom="16dp"/>
+
+            <EditText
+                android:id="@+id/detailTitleEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:inputType="text"
+                android:hint="@string/title"
+                tools:text="@string/tool_value_title"
+                android:textSize="@dimen/textsize_big"
+                android:textColor="@color/grey_very_dark"/>
+        </ViewSwitcher>
+
+        <ViewSwitcher
+            android:id="@+id/switcherDesc"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/description"
-            android:gravity="top"
-            android:inputType="textImeMultiLine"
-            android:minLines="12"
-            tools:text="@string/tool_value_description"
-            android:textColor="@color/grey_very_dark"
-            android:textSize="@dimen/textsize_medium"/>
-    </ViewSwitcher>
+            android:layout_height="wrap_content">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/detailDescription"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/description"
+                android:paddingTop="10dp"
+                android:paddingLeft="4dp"
+                android:minLines="12"
+                tools:text="@string/tool_value_description"
+                android:textSize="@dimen/textsize_medium"/>
+
+            <EditText
+                android:id="@+id/detailDescriptionEdit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/description"
+                android:gravity="top"
+                android:inputType="textImeMultiLine"
+                android:minLines="12"
+                tools:text="@string/tool_value_description"
+                android:textColor="@color/grey_very_dark"
+                android:textSize="@dimen/textsize_medium"/>
+        </ViewSwitcher>
+
+    </LinearLayout>
+
+</RelativeLayout>

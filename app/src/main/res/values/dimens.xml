@@ -4,6 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="icon_size_medium">24dp</dimen>
     <dimen name="icon_size_big">32dp</dimen>
+    <dimen name="icon_size_bigger">40dp</dimen>
 
     <!--Text size-->
     <dimen name="textsize_medium">15sp</dimen>
