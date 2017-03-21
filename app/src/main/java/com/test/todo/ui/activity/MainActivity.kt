@@ -76,9 +76,7 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
 
     override fun onTaskClick(task: Task?) {
         var intent = Intent(this, DetailActivity::class.java)
-        val arg = Bundle()
-        arg.putInt(Extra.EXTRA_ID, task?.id!!)
-        intent.putExtra("arg", arg)
+        intent.putExtra(Extra.EXTRA_ID, task?.id!!)
         startActivity(intent)
     }
 }

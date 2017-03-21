@@ -25,9 +25,9 @@ class DetailActivity : AppCompatActivity(), View.OnFocusChangeListener {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 //        val id = intent.getLongExtra(Extra.EXTRA_ID, -1).toInt()
-        val id = intent.getBundleExtra("arg")?.getInt(Extra.EXTRA_ID, -1)
+        val id = intent.getIntExtra(Extra.EXTRA_ID, -1)
 
-        task = TaskDao.getById(id!!)
+        task = TaskDao.getById(id)
         if (task != null) {
             configureView()
         } else {
